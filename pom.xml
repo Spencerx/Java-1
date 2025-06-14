@@ -20,7 +20,7 @@
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>5.13.0</version>
+                <version>5.13.1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -76,8 +76,6 @@
                     <compilerArgs>
                         <arg>-Xlint:all</arg>
                         <arg>-Xlint:-auxiliaryclass</arg>
-                        <arg>-Xlint:-rawtypes</arg>
-                        <arg>-Xlint:-unchecked</arg>
                         <arg>-Werror</arg>
                     </compilerArgs>
                 </configuration>
@@ -145,6 +143,11 @@
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>3.26.0</version>
                 <configuration>
+                    <rulesets>
+                        <ruleset>/rulesets/java/maven-pmd-plugin-default.xml</ruleset>
+                        <ruleset>/category/java/security.xml</ruleset>
+                        <ruleset>file://${basedir}/pmd-custom_ruleset.xml</ruleset>
+                    </rulesets>
                     <printFailingErrors>true</printFailingErrors>
                     <includeTests>true</includeTests>
                     <linkXRef>false</linkXRef>
